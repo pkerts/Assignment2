@@ -86,16 +86,13 @@ void assn2::write()
 int main()
 {
 	// Open the file we will read from
-	std::ifstream ifs("input.txt", std::ios::binary | std::ios::ate); // open file in binary mode, and at the end
+	std::ifstream ifs("input.txt", std::ios::binary); // open file in binary mode
 	// Create vector where individual bits will be held
 	std::vector<unsigned int> bits;
 	assn2 A2;
 
 	if (ifs) // If file was/is open(ed) successfully
 	{
-		// Since file was opened at the end, we can get the size of it (in terms of bytes/chars)
-		int size = ifs.tellg(); // Get the size
-		ifs.seekg(0); // Go back to beginning of file
 		unsigned char byte; // Create a temp unsigned char that will act as our byte buffer
 
 		while (ifs.read(reinterpret_cast<char*>(&byte), 1)) // Read in 1 byte at a time until the end of the file
@@ -126,5 +123,10 @@ int main()
 
 		// Use Linux cmp or diff command to confirm the input and output files are the same
 	}
+	else
+	{
+		std::cerr << "File was not opened successfully" << std::endl;
+	}
+
 	return 0;
 }
