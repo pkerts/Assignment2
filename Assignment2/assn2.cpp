@@ -6,13 +6,15 @@
 #include <cstdint>
 #include <vector>
 #include <limits>
+#include <cstddef>
+#include <charconv>
+#include <map>
+#include <algorithm>
 
 
 assn2::assn2()
 {
 }
-
-
 assn2::~assn2()
 {
 }
@@ -27,8 +29,6 @@ unsigned int assn2::getBit(unsigned char bit, int position)
 	bit = bit >> 7; 
 	return bit;
 }
-
-
 void assn2::getByte(unsigned char byte, std::vector<unsigned int>& bits)
 {
 	for (auto i = 0; i < 8; ++i)
@@ -44,8 +44,6 @@ void assn2::flush(int count)
 	putByte(buffer);
 	flush();
 }
-
-
 void assn2::flush()
 {
 	buffer = buffer << 8;
@@ -64,8 +62,6 @@ int assn2::putBit(unsigned int bit)
 	// once we reach 8 bits send the byte to putbyte
 	return 0;
 }
-
-
 int assn2::putByte(unsigned char byte)
 {
 	unsigned char reversed = { 0 };
@@ -76,6 +72,10 @@ int assn2::putByte(unsigned char byte)
 }
 
 
+void assn2::read(std::string filename)
+{
+	std::cout << "Read function" << std::endl;
+}
 void assn2::write()
 {
 	putByte(buffer);
@@ -127,6 +127,7 @@ int main()
 	{
 		std::cerr << "File was not opened successfully" << std::endl;
 	}
+
 
 	return 0;
 }
