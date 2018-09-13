@@ -29,7 +29,7 @@ unsigned int assn2::getBit(unsigned char bit, int position)
 	bit = bit >> 7; 
 	return bit;
 }
-void assn2::getByte(unsigned char byte, std::vector<unsigned int>& bits)
+void assn2::getByte(unsigned char byte)
 {
 	for (auto i = 0; i < 8; ++i)
 	{
@@ -74,8 +74,48 @@ int assn2::putByte(unsigned char byte)
 
 void assn2::read(std::string filename)
 {
-	std::cout << "Read function" << std::endl;
+	// Open the file we will read from
+	std::ifstream ifs(filename, std::ios::binary); // open file in binary mode
+
+	if (ifs) // If file was/is open(ed) successfully
+	{
+		unsigned char byte; // Create a temp unsigned char that will act as our byte buffer
+
+		while (ifs.read(reinterpret_cast<char*>(&byte), 1)) // Read in 1 byte at a time until the end of the file
+		{
+			getByte(byte); // Send each byte to getByte
+		}
+
+		int count = 0; // Create a count integer to keep track of how many bits we've buffered
+
+		for (auto i : bits)
+		{
+			putBit(i);
+			++count;
+			if (count == 8)
+			{
+				write();
+				count = 0;
+			}
+		}
+
+		if (count) flush();
+
+		// Create/open file we will output to
+		std::ofstream ofs("output.txt", std::ios::binary); // open this file also in binary mode
+
+		// Finally write the bytes to our output file
+		ofs.write(reinterpret_cast<char*>(&bytes[0]), bytes.size() * sizeof(unsigned char));
+
+		// Use Linux cmp or diff command to confirm the input and output files are the same
+	}
+	else
+	{
+		std::cerr << "File was not opened successfully" << std::endl;
+	}
 }
+
+
 void assn2::write()
 {
 	putByte(buffer);
@@ -85,49 +125,8 @@ void assn2::write()
 
 int main()
 {
-	// Open the file we will read from
-	std::ifstream ifs("input.txt", std::ios::binary); // open file in binary mode
-	// Create vector where individual bits will be held
-	std::vector<unsigned int> bits;
 	assn2 A2;
-
-	if (ifs) // If file was/is open(ed) successfully
-	{
-		unsigned char byte; // Create a temp unsigned char that will act as our byte buffer
-
-		while (ifs.read(reinterpret_cast<char*>(&byte), 1)) // Read in 1 byte at a time until the end of the file
-		{
-			A2.getByte(byte, bits); // Send each byte along with our bits vector to getByte
-		}
-
-		int count = 0; // Create a count integer to keep track of how many bits we've buffered
-
-		for (auto i : bits)
-		{
-			A2.putBit(i);
-			++count;
-			if (count == 8)
-			{
-				A2.write();
-				count = 0;
-			}
-		}
-
-		if (count) A2.flush();
-
-		// Create/open file we will output to
-		std::ofstream ofs("output.txt", std::ios::binary); // open this file also in binary mode
-
-		// Finally write the bytes to our output file
-		ofs.write(reinterpret_cast<char*>(&A2.bytes[0]), A2.bytes.size() * sizeof(unsigned char));
-
-		// Use Linux cmp or diff command to confirm the input and output files are the same
-	}
-	else
-	{
-		std::cerr << "File was not opened successfully" << std::endl;
-	}
-
+	A2.read("input.txt");
 
 	return 0;
 }

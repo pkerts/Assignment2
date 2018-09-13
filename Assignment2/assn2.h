@@ -16,12 +16,13 @@ class assn2
 {
 private:
 	unsigned char buffer = { 0 };
+	std::vector<unsigned int> bits;
 public:
 	assn2();
 	~assn2();
 
 	unsigned int getBit(unsigned char bit, int position);
-	void getByte(unsigned char byte, std::vector<unsigned int>& bits);
+	void getByte(unsigned char byte);
 
 	void flush(int count);
 	void flush();
