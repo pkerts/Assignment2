@@ -1,16 +1,8 @@
 #include "assn2.h"
 #include <iostream>
-#include <sstream>
 #include <fstream>
-#include <string>
-#include <cstdint>
-#include <vector>
-#include <limits>
-#include <cstddef>
-#include <charconv>
-#include <map>
-#include <algorithm>
-
+#include <bitset>
+#include <memory>
 
 assn2::assn2()
 {
@@ -19,65 +11,11 @@ assn2::~assn2()
 {
 }
 
-
-unsigned int assn2::getBit(unsigned char bit, int position)
-{
-	unsigned int mask{ 0b01111111 };
-	bit = bit << position;
-	bit = bit | mask;
-	bit = bit ^ mask;
-	bit = bit >> 7; 
-	return bit;
-}
-void assn2::getByte(unsigned char byte)
-{
-	for (auto i = 0; i < 8; ++i)
-	{
-		bits.emplace_back(getBit(byte, i));
-	}
-}
-
-
-void assn2::flush(int count)
-{
-	buffer = buffer >> (7 - count);
-	putByte(buffer);
-	flush();
-}
-void assn2::flush()
-{
-	buffer = buffer << 8;
-}
-
-
-int assn2::putBit(unsigned int bit)
-{
-	buffer = buffer >> 1;
-	if (bit == 1)
-	{
-		buffer += 128;
-	}
-	// keep a unsigned char
-	// update with the bits we receive
-	// once we reach 8 bits send the byte to putbyte
-	return 0;
-}
-int assn2::putByte(unsigned char byte)
-{
-	unsigned char reversed = { 0 };
-	for (int i = 0; i < 8; i++) // Our method currently gives us the bits in reversed order
-		reversed |= ((byte >> i) & 0b1) << (7 - i); // Here we correct the order of the bits
-	bytes.emplace_back(reversed); // We put the correct byte into the byte vector
-	return 0;
-}
-
-
 void assn2::read(std::string filename)
 {
-	// Open the file we will read from
-	std::ifstream ifs(filename, std::ios::binary); // open file in binary mode
+	std::ifstream ifs(filename, std::ios::binary);
 
-	if (ifs) // If file was/is open(ed) successfully
+	if (ifs)
 	{
 		unsigned char byte; // Create a temp unsigned char that will act as our byte buffer
 
@@ -86,47 +24,91 @@ void assn2::read(std::string filename)
 			getByte(byte); // Send each byte to getByte
 		}
 
-		int count = 0; // Create a count integer to keep track of how many bits we've buffered
+		auto bits_buffered = 0;
 
 		for (auto i : bits)
 		{
 			putBit(i);
-			++count;
-			if (count == 8)
+			++bits_buffered;
+			if (bits_buffered == 8)
 			{
-				write();
-				count = 0;
+				putByte(buffer);
+				flush();
+				bits_buffered = 0;
 			}
 		}
-
-		if (count) flush();
-
-		// Create/open file we will output to
-		std::ofstream ofs("output.txt", std::ios::binary); // open this file also in binary mode
-
-		// Finally write the bytes to our output file
-		ofs.write(reinterpret_cast<char*>(&bytes[0]), bytes.size() * sizeof(unsigned char));
-
-		// Use Linux cmp or diff command to confirm the input and output files are the same
+		if (bits_buffered) flush();
 	}
 	else
 	{
-		std::cerr << "File was not opened successfully" << std::endl;
+		std::cerr << "File was not opened successfully." << std::endl;
 	}
 }
-
-
-void assn2::write()
+void assn2::write(std::string filename)
 {
+	std::ofstream ofs(filename, std::ios::binary);
+
+	// Write to our output file using storage where bytes are held
+	ofs.write(reinterpret_cast<char*>(&bytes[0]), bytes.size() * sizeof(unsigned char));
+
+	// Use Linux cmp or diff command to confirm the input and output files are the same
+}
+
+unsigned int assn2::getBit(unsigned char byte_into_bit, int position)
+{
+	unsigned int mask{ 0b01111111 };
+
+	// Maneuver the byte so the bit we desire is in the leftmost position
+	byte_into_bit = byte_into_bit << position;
+
+	// Make all bits 0 other than our desired bit
+	byte_into_bit = byte_into_bit | mask;
+	byte_into_bit = byte_into_bit ^ mask;
+
+	// Shift back so the bit is now in the rightmost position
+	byte_into_bit = byte_into_bit >> 7;
+
+	return byte_into_bit;
+}
+void assn2::getByte(unsigned char byte)
+{
+	for (auto i = 0; i < 8; ++i)
+	{
+		// Process the byte we receive bit by bit and use a vector to store the bits that getBit returns.
+		bits.emplace_back(getBit(byte, i));
+	}
+}
+int assn2::putBit(unsigned int bit)
+{
+	// Using our incoming bit, we are setting the leftmost bit of our unsigned char byte buffer
+	buffer = buffer >> 1; // Right shift the buffer by 1 to prepare the leftmost bit to be worked on
+	if (bit == 1)
+	{
+		buffer |= 1UL << 7; // Set the leftmost bit to 1 if the incoming bit is a 1. Otherwise it will just stay a 0 and no extra work needs to be done.
+	}
+	return 0;
+}
+int assn2::putByte(unsigned char byte)
+{
+	unsigned char reversed = { 0 };
+	// With our current grand scheme, bytes come here but the bits are in a reverse order
+	for (int i = 0; i < 8; i++) // Correct the byte and reverse the bits
+		reversed |= ((byte >> i) & 0b1) << (7 - i);
+	bytes.emplace_back(reversed); // Store the correct, appropriate byte in the bytes vector
+	// It works
+	return 0;
+}
+void assn2::flush(int bits_buffered)
+{
+	buffer = buffer >> (7 - bits_buffered); // Pad the byte with 0s til it's full
 	putByte(buffer);
 	flush();
 }
-
-
-int main()
+void assn2::flush()
 {
-	assn2 A2;
-	A2.read("input.txt");
+	buffer = buffer << 8;
+}
 
+auto main()->int {
 	return 0;
 }
