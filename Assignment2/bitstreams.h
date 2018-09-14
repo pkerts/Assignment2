@@ -2,11 +2,11 @@
 #include <vector>
 
 
-class assn2
+class bitstreams
 {
 public:
-	assn2();
-	~assn2();
+	bitstreams();
+	~bitstreams();
 
 	void read(std::string filename);
 	void write(std::string filename);

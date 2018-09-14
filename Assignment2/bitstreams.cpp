@@ -1,17 +1,17 @@
-#include "assn2.h"
+#include "bitstreams.h"
 #include <iostream>
 #include <fstream>
 #include <bitset>
 #include <memory>
 
-assn2::assn2()
+bitstreams::bitstreams()
 {
 }
-assn2::~assn2()
+bitstreams::~bitstreams()
 {
 }
 
-void assn2::read(std::string filename)
+void bitstreams::read(std::string filename)
 {
 	std::ifstream ifs(filename, std::ios::binary);
 
@@ -44,7 +44,7 @@ void assn2::read(std::string filename)
 		std::cerr << "File was not opened successfully." << std::endl;
 	}
 }
-void assn2::write(std::string filename)
+void bitstreams::write(std::string filename)
 {
 	std::ofstream ofs(filename, std::ios::binary);
 
@@ -54,7 +54,7 @@ void assn2::write(std::string filename)
 	// Use Linux cmp or diff command to confirm the input and output files are the same
 }
 
-unsigned int assn2::getBit(unsigned char byte_into_bit, int position)
+unsigned int bitstreams::getBit(unsigned char byte_into_bit, int position)
 {
 	unsigned int mask{ 0b01111111 };
 
@@ -70,7 +70,7 @@ unsigned int assn2::getBit(unsigned char byte_into_bit, int position)
 
 	return byte_into_bit;
 }
-void assn2::getByte(unsigned char byte)
+void bitstreams::getByte(unsigned char byte)
 {
 	for (auto i = 0; i < 8; ++i)
 	{
@@ -78,7 +78,7 @@ void assn2::getByte(unsigned char byte)
 		bits.emplace_back(getBit(byte, i));
 	}
 }
-int assn2::putBit(unsigned int bit)
+int bitstreams::putBit(unsigned int bit)
 {
 	// Using our incoming bit, we are setting the leftmost bit of our unsigned char byte buffer
 	buffer = buffer >> 1; // Right shift the buffer by 1 to prepare the leftmost bit to be worked on
@@ -88,7 +88,7 @@ int assn2::putBit(unsigned int bit)
 	}
 	return 0;
 }
-int assn2::putByte(unsigned char byte)
+int bitstreams::putByte(unsigned char byte)
 {
 	unsigned char reversed = { 0 };
 	// With our current grand scheme, bytes come here but the bits are in a reverse order
@@ -98,13 +98,13 @@ int assn2::putByte(unsigned char byte)
 	// It works
 	return 0;
 }
-void assn2::flush(int bits_buffered)
+void bitstreams::flush(int bits_buffered)
 {
 	buffer = buffer >> (7 - bits_buffered); // Pad the byte with 0s til it's full
 	putByte(buffer);
 	flush();
 }
-void assn2::flush()
+void bitstreams::flush()
 {
 	buffer = buffer << 8;
 }
