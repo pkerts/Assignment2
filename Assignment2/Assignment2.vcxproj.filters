@@ -18,9 +18,15 @@
     <ClInclude Include="bitstreams.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="frequency_table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bitstreams.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frequency_table.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

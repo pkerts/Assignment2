@@ -109,6 +109,6 @@ void bitstreams::flush()
 	buffer = buffer << 8;
 }
 
-auto main()->int {
-	return 0;
-}
+//auto main()->int {
+//	return 0;
+//}
