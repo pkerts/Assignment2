@@ -243,7 +243,6 @@ auto main()->int {
 		std::cout << a.priority_ << std::endl;
 	}
 	
-
 	/*char ch;
 	while (std::cin.get(ch))
 		ft.MapMaker(ch);
