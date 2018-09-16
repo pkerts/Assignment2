@@ -1,4 +1,5 @@
 #include "frequency_table.h"
+#include "Heap.cpp"
 #include <fstream>
 #include <iostream>
 #include <algorithm>
@@ -148,12 +149,36 @@ void frequency_table::Test(std::string testfile)
 	}
 }
 
+std::map<char, unsigned int> frequency_table::map()
+{
+	auto map = chars_and_frequencies_;
+	return map;
+}
+
 auto main()->int {
+	Heap<unsigned int, unsigned char> h;
 	frequency_table ft;
-	char ch;
+
+	std::fstream file("input.txt");
+	if (file)
+	{
+		char ch;
+		while (std::cin.get(ch))
+		{
+			ft.MapMaker(ch);
+		}
+		auto map = ft.map();
+
+		for (const auto i : map)
+		{
+			h.push(i.second, i.first);
+		}
+	}
+
+	/*char ch;
 	while (std::cin.get(ch))
 		ft.MapMaker(ch);
-	ft.Print();
+	ft.Print();*/
 	// ft.Test();
 	return 0;
 }

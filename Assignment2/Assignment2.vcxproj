@@ -118,10 +118,12 @@
   <ItemGroup>
     <ClInclude Include="bitstreams.h" />
     <ClInclude Include="frequency_table.h" />
+    <ClInclude Include="Heap.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bitstreams.cpp" />
     <ClCompile Include="frequency_table.cpp" />
+    <ClCompile Include="Heap.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
