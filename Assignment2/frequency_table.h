@@ -1,7 +1,6 @@
 #pragma once
 #include <map>
 
-
 class frequency_table
 {
 public:

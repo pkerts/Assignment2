@@ -29,6 +29,12 @@ private:
 	std::vector<HeapNode> veep_;
 	HeapNode* root_;
 	int char_count = 0;
+	struct coded_symbol
+	{
+		unsigned char length;
+		unsigned long long bitpattern;
+	};
+	coded_symbol coded_symbols[UCHAR_MAX + 1];
 
 public:
 	Heap();
@@ -40,6 +46,9 @@ public:
 	void createTree();
 	void printLeaves();
 	void printLeaves(HeapNode* ptr);
+	void encode();
+	void encode(HeapNode* ptr, unsigned char bitlength, unsigned long long bitpattern);
+	void PrintCodedSymbols();
 	
 	HeapNode* getNode(unsigned int priority, unsigned char data, HeapNode* left, HeapNode* right);
 	HeapNode* pop();

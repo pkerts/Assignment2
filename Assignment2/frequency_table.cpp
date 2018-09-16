@@ -96,6 +96,45 @@ void Heap<Priority, Data>::printLeaves(HeapNode* ptr)
 }
 
 template<typename Priority, typename Data>
+void Heap<Priority, Data>::encode()
+{
+	if (root_)
+	{
+		encode(root_, 0, 0);
+	}
+}
+
+template<typename Priority, typename Data>
+void Heap<Priority, Data>::encode(HeapNode* ptr, unsigned char bitlength, unsigned long long bitpattern)
+{
+	if (!(ptr->left_) && !(ptr->right_))
+	{
+		coded_symbol cs{ bitlength, bitpattern };
+		coded_symbols[(int)ptr->data_] = cs;
+	}
+
+	if (ptr->left_)
+		encode(ptr->left_, bitlength + 1, bitpattern << 1);
+	if (ptr->right_)
+		encode(ptr->right_, bitlength + 1, bitpattern << 1 | 1);
+}
+
+template<typename Priority, typename Data>
+void Heap<Priority, Data>::PrintCodedSymbols()
+{
+
+	for (auto i = 0; i < UCHAR_MAX + 1; ++i)
+	{
+		std::cerr << "(" << std::hex << std::uppercase << std::showbase << i << ") char: ";
+		if (isprint((unsigned char)i))
+			std::cerr << (unsigned char)i;
+		else
+			std::cerr << "NA";
+		std::cerr << " bitlength: " << std::dec << (int)coded_symbols[i].length << " code: " << std::hex << std::uppercase << std::showbase << coded_symbols[i].bitpattern << std::endl;
+	}
+}
+
+template<typename Priority, typename Data>
 typename Heap<Priority, Data>::HeapNode* Heap<Priority, Data>::getNode(unsigned int priority, unsigned char data, HeapNode* left, HeapNode* right)
 {
 	HeapNode* n = new HeapNode();
@@ -118,6 +157,11 @@ typename Heap<Priority, Data>::HeapNode* Heap<Priority, Data>::pop()
 		auto min_return = getNode(min_value->priority_, min_value->data_, min_value->left_, min_value->right_);
 		veep_.erase(min_value);
 		return min_return;
+	}
+	else
+	{
+		std::cerr << "Vector is empty" << std::endl;
+		return nullptr;
 	}
 }
 
@@ -305,6 +349,10 @@ auto main()->int {
 	
 	ft.Print();
 	h.printLeaves();
+
+	h.encode();
+
+	h.PrintCodedSymbols();
 
 	// h.pop();
 
