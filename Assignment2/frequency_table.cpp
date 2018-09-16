@@ -98,11 +98,62 @@ void frequency_table::Print()
 		}
 }
 
+void frequency_table::Test()
+{
+	char ch;
+	std::fstream testfile("test.txt", std::fstream::in | std::fstream::out | std::fstream::trunc);
+	for (int a = 0; a < 2; ++a)
+	{
+		for (int i = 1; i < 255; ++i)
+		{
+			unsigned char a = i;
+			if (isprint(a))
+			{
+				testfile << a;
+			}
+
+		}
+		testfile << std::endl;
+	}
+	testfile.seekg(0);
+	if (testfile.is_open())
+		std::cerr << testfile.rdbuf();
+	testfile.seekg(0);
+	std::cerr << std::endl;
+	while (testfile.get(ch))
+	{
+		MapMaker(ch);
+	}
+	Print();
+}
+
+void frequency_table::Test(std::string testfile)
+{
+	std::fstream file(testfile);
+
+	if (file)
+	{
+		char ch;
+		if (file.is_open())
+		{
+			std::cerr << file.rdbuf();
+		}
+		file.seekg(0);
+		std::cerr << std::endl;
+		while (file.get(ch))
+		{
+			MapMaker(ch);
+		}
+		Print();
+	}
+}
+
 auto main()->int {
 	frequency_table ft;
-	char cool;
-	while (std::cin.get(cool))
-		ft.MapMaker(cool);
+	char ch;
+	while (std::cin.get(ch))
+		ft.MapMaker(ch);
 	ft.Print();
+	// ft.Test();
 	return 0;
 }

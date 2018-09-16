@@ -13,7 +13,9 @@ public:
 	void PrintSplats(int v, int max);
 	/*void Print(std::string filename);*/
 	void Print();
+	void Test();
+	void Test(std::string testfile);
 private:
-	std::map<char, int> chars_and_frequencies_;
+	std::map<char, unsigned int> chars_and_frequencies_;
 };
 
