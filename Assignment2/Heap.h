@@ -22,8 +22,14 @@ private:
 	struct HeapNode {
 		Priority priority_;
 		Data data_;
+		HeapNode* left_;
+		HeapNode* right_;
+		// HeapNode(std::initializer_list<HeapNode>) {}
 	};
 	std::vector<HeapNode> veep_;
+	HeapNode* root_;
+	int char_count = 0;
+
 public:
 	Heap();
 	~Heap();
@@ -31,5 +37,10 @@ public:
 	bool is_empty();
 	void HeapSort();
 	int parent(int i);
-	HeapNode pop();
+	void createTree();
+	void printLeaves();
+	void printLeaves(HeapNode* ptr);
+	
+	HeapNode* getNode(unsigned int priority, unsigned char data, HeapNode* left, HeapNode* right);
+	HeapNode* pop();
 };

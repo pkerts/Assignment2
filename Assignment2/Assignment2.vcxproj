@@ -119,6 +119,7 @@
     <ClInclude Include="bitstreams.h" />
     <ClInclude Include="frequency_table.h" />
     <ClInclude Include="Heap.h" />
+    <ClInclude Include="huffman_tree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bitstreams.cpp" />

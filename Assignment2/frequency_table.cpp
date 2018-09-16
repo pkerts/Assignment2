@@ -1,5 +1,6 @@
 #include "frequency_table.h"
 #include "Heap.h"
+#include "huffman_tree.h"
 #include <fstream>
 #include <iostream>
 #include <algorithm>
@@ -56,13 +57,65 @@ int Heap<Priority, Data>::parent(int i)
 }
 
 template<typename Priority, typename Data>
-typename Heap<Priority, Data>::HeapNode Heap<Priority, Data>::pop()
+void Heap<Priority, Data>::createTree()
+{
+	while (veep_.size() > 1)
+	{
+		HeapNode* left = pop();
+		HeapNode* right = pop();
+		auto priority = left->priority_ + right->priority_;
+		veep_.emplace_back(*getNode(priority, '\0', left, right));
+	}
+}
+
+template<typename Priority, typename Data>
+void Heap<Priority, Data>::printLeaves()
+{
+	root_ = &veep_[0];
+	printLeaves(root_);
+	std::cout << std::endl << "total character count: " << char_count << std::endl;
+	char_count = 0;
+}
+
+template<typename Priority, typename Data>
+void Heap<Priority, Data>::printLeaves(HeapNode* ptr)
+{
+	if (ptr->left_)
+	{
+		printLeaves(ptr->left_);
+	}
+	if (!(ptr->left_) && !(ptr->right_))
+	{
+		std::cout << "CHAR: " << ptr->data_ << " OCCURRENCES: " << ptr->priority_ << std::endl;
+		char_count += ptr->priority_;
+	}
+	if (ptr->right_)
+	{
+		printLeaves(ptr->right_);
+	}
+}
+
+template<typename Priority, typename Data>
+typename Heap<Priority, Data>::HeapNode* Heap<Priority, Data>::getNode(unsigned int priority, unsigned char data, HeapNode* left, HeapNode* right)
+{
+	HeapNode* n = new HeapNode();
+
+	n->priority_ = priority;
+	n->data_ = data;
+	n->left_ = left;
+	n->right_ = right;
+
+	return n;
+}
+
+template<typename Priority, typename Data>
+typename Heap<Priority, Data>::HeapNode* Heap<Priority, Data>::pop()
 {
 	if (!is_empty())
 	{
 		auto min_value = std::min_element(veep_.begin(), veep_.end(),
 			[](HeapNode const& lhs, HeapNode const& rhs) {return lhs.priority_ < rhs.priority_; });
-		HeapNode min_return{ min_value->priority_, min_value->data_ };
+		auto min_return = getNode(min_value->priority_, min_value->data_, min_value->left_, min_value->right_);
 		veep_.erase(min_value);
 		return min_return;
 	}
@@ -147,6 +200,7 @@ void frequency_table::Print()
 			return p1.second < p2.second; });
 		auto max = x->second;
 		std::cerr << "HEX   CHAR OCCURENCES\n";
+		auto character_count = 0;
 		for (const auto& kv : chars_and_frequencies_)
 		{
 			std::cerr << "(" << std::hex << std::uppercase << std::showbase << (int)kv.first << ")";
@@ -158,7 +212,9 @@ void frequency_table::Print()
 			std::cerr << "\t" << std::dec << kv.second << "\t";
 			PrintSplats(kv.second, max);
 			std::cerr << std::endl;
+			character_count += kv.second;
 		}
+		std::cerr << "total character count: " << character_count << std::endl;
 }
 
 void frequency_table::Test()
@@ -217,6 +273,14 @@ std::map<char, unsigned int> frequency_table::map()
 	return map;
 }
 
+huffman_tree::huffman_tree()
+{
+}
+
+huffman_tree::~huffman_tree()
+{
+}
+
 auto main()->int {
 	Heap<unsigned int, unsigned char> h;
 	frequency_table ft;
@@ -237,12 +301,13 @@ auto main()->int {
 		}
 	}
 
-	for (auto i = 0; i < 10; ++i)
-	{
-		auto a = h.pop();
-		std::cout << a.priority_ << std::endl;
-	}
+	h.createTree();
 	
+	ft.Print();
+	h.printLeaves();
+
+	// h.pop();
+
 	/*char ch;
 	while (std::cin.get(ch))
 		ft.MapMaker(ch);
