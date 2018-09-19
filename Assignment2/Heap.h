@@ -1,5 +1,9 @@
 #pragma once
 #include <vector>
+#include <climits>
+#include <fstream>
+#include <string>
+#include <cmath>
 
 // DONE: 
 // PUSH()
@@ -35,6 +39,11 @@ private:
 		unsigned long long bitpattern;
 	};
 	coded_symbol coded_symbols[UCHAR_MAX + 1];
+	/*struct Record
+	{
+		unsigned char length;
+		unsigned char code[std::ceil(length/8)];
+	};*/
 
 public:
 	Heap();
@@ -49,7 +58,13 @@ public:
 	void encode();
 	void encode(HeapNode* ptr, unsigned char bitlength, unsigned long long bitpattern);
 	void PrintCodedSymbols();
-	
+	void PrintSymbols();
+	template<typename T>
+	std::string decimal_to_binary(T binary_decimal);
+	std::string decimal_to_binary(const coded_symbol symbol);
+	void compress();
+	void decompress();
+
 	HeapNode* getNode(unsigned int priority, unsigned char data, HeapNode* left, HeapNode* right);
 	HeapNode* pop();
 };

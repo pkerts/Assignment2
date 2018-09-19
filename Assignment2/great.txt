@@ -84,259 +84,259 @@ HEX   CHAR OCCURENCES
 (0X79)	y	1160	/////
 (0X7A)	z	21	/
 total character count: 81732
-(0) char: NA bitlength: 0 code: 0
-(0X1) char: NA bitlength: 0 code: 0
-(0X2) char: NA bitlength: 0 code: 0
-(0X3) char: NA bitlength: 0 code: 0
-(0X4) char: NA bitlength: 0 code: 0
-(0X5) char: NA bitlength: 0 code: 0
-(0X6) char: NA bitlength: 0 code: 0
-(0X7) char: NA bitlength: 0 code: 0
-(0X8) char: NA bitlength: 0 code: 0
-(0X9) char: NA bitlength: 0 code: 0
-(0XA) char: NA bitlength: 6 code: 0X34
-(0XB) char: NA bitlength: 0 code: 0
-(0XC) char: NA bitlength: 0 code: 0
-(0XD) char: NA bitlength: 0 code: 0
-(0XE) char: NA bitlength: 0 code: 0
-(0XF) char: NA bitlength: 0 code: 0
-(0X10) char: NA bitlength: 0 code: 0
-(0X11) char: NA bitlength: 0 code: 0
-(0X12) char: NA bitlength: 0 code: 0
-(0X13) char: NA bitlength: 0 code: 0
-(0X14) char: NA bitlength: 0 code: 0
-(0X15) char: NA bitlength: 0 code: 0
-(0X16) char: NA bitlength: 0 code: 0
-(0X17) char: NA bitlength: 0 code: 0
-(0X18) char: NA bitlength: 0 code: 0
-(0X19) char: NA bitlength: 0 code: 0
-(0X1A) char: NA bitlength: 0 code: 0
-(0X1B) char: NA bitlength: 0 code: 0
-(0X1C) char: NA bitlength: 0 code: 0
-(0X1D) char: NA bitlength: 0 code: 0
-(0X1E) char: NA bitlength: 0 code: 0
-(0X1F) char: NA bitlength: 0 code: 0
-(0X20) char:   bitlength: 3 code: 0X7
-(0X21) char: ! bitlength: 12 code: 0X5C3
-(0X22) char: " bitlength: 8 code: 0XC0
-(0X23) char: # bitlength: 16 code: 0XC202
-(0X24) char: $ bitlength: 15 code: 0X3C4C
-(0X25) char: % bitlength: 16 code: 0XC203
-(0X26) char: & bitlength: 15 code: 0X3C4D
-(0X27) char: ' bitlength: 8 code: 0X50
-(0X28) char: ( bitlength: 12 code: 0XC2D
-(0X29) char: ) bitlength: 12 code: 0XC2E
-(0X2A) char: * bitlength: 11 code: 0X3CE
-(0X2B) char: + bitlength: 0 code: 0
-(0X2C) char: , bitlength: 6 code: 0X16
-(0X2D) char: - bitlength: 8 code: 0X7A
-(0X2E) char: . bitlength: 7 code: 0X50
-(0X2F) char: / bitlength: 11 code: 0X2E0
-(0X30) char: 0 bitlength: 12 code: 0XC21
-(0X31) char: 1 bitlength: 10 code: 0X171
-(0X32) char: 2 bitlength: 12 code: 0X5C2
-(0X33) char: 3 bitlength: 13 code: 0X185F
-(0X34) char: 4 bitlength: 13 code: 0XF14
-(0X35) char: 5 bitlength: 13 code: 0X1858
-(0X36) char: 6 bitlength: 13 code: 0XF12
-(0X37) char: 7 bitlength: 13 code: 0X1841
-(0X38) char: 8 bitlength: 13 code: 0XF15
-(0X39) char: 9 bitlength: 12 code: 0X788
-(0X3A) char: : bitlength: 11 code: 0X3CF
-(0X3B) char: ; bitlength: 13 code: 0X1859
-(0X3C) char: < bitlength: 0 code: 0
-(0X3D) char: = bitlength: 0 code: 0
-(0X3E) char: > bitlength: 0 code: 0
-(0X3F) char: ? bitlength: 11 code: 0X611
-(0X40) char: @ bitlength: 15 code: 0X3C4E
-(0X41) char: A bitlength: 8 code: 0X7B
-(0X42) char: B bitlength: 10 code: 0X1E3
-(0X43) char: C bitlength: 9 code: 0XBA
-(0X44) char: D bitlength: 9 code: 0XA2
-(0X45) char: E bitlength: 9 code: 0X147
-(0X46) char: F bitlength: 10 code: 0X289
-(0X47) char: G bitlength: 9 code: 0X145
-(0X48) char: H bitlength: 10 code: 0X288
-(0X49) char: I bitlength: 8 code: 0XC1
-(0X4A) char: J bitlength: 12 code: 0X78B
-(0X4B) char: K bitlength: 13 code: 0X185E
-(0X4C) char: L bitlength: 10 code: 0X28D
-(0X4D) char: M bitlength: 10 code: 0X1E4
-(0X4E) char: N bitlength: 10 code: 0X309
-(0X4F) char: O bitlength: 10 code: 0X30D
-(0X50) char: P bitlength: 9 code: 0XB9
-(0X51) char: Q bitlength: 15 code: 0X3C4F
-(0X52) char: R bitlength: 10 code: 0X30A
-(0X53) char: S bitlength: 9 code: 0XBB
-(0X54) char: T bitlength: 9 code: 0X187
-(0X55) char: U bitlength: 10 code: 0X1E6
-(0X56) char: V bitlength: 12 code: 0XA30
-(0X57) char: W bitlength: 11 code: 0X619
-(0X58) char: X bitlength: 15 code: 0X6100
-(0X59) char: Y bitlength: 11 code: 0X618
-(0X5A) char: Z bitlength: 0 code: 0
-(0X5B) char: [ bitlength: 15 code: 0X6102
-(0X5C) char: \ bitlength: 0 code: 0
-(0X5D) char: ] bitlength: 15 code: 0X6103
-(0X5E) char: ^ bitlength: 0 code: 0
-(0X5F) char: _ bitlength: 10 code: 0X1E5
-(0X60) char: ` bitlength: 0 code: 0
-(0X61) char: a bitlength: 4 code: 0X6
-(0X62) char: b bitlength: 6 code: 0X15
-(0X63) char: c bitlength: 6 code: 0X31
-(0X64) char: d bitlength: 5 code: 0X12
-(0X65) char: e bitlength: 3 code: 0
-(0X66) char: f bitlength: 6 code: 0X2B
-(0X67) char: g bitlength: 6 code: 0X1F
-(0X68) char: h bitlength: 5 code: 0X19
-(0X69) char: i bitlength: 4 code: 0X4
-(0X6A) char: j bitlength: 9 code: 0XF0
-(0X6B) char: k bitlength: 7 code: 0X2F
-(0X6C) char: l bitlength: 5 code: 0X13
-(0X6D) char: m bitlength: 6 code: 0X2A
-(0X6E) char: n bitlength: 4 code: 0X3
-(0X6F) char: o bitlength: 4 code: 0X8
-(0X70) char: p bitlength: 6 code: 0X1C
-(0X71) char: q bitlength: 11 code: 0X519
-(0X72) char: r bitlength: 4 code: 0X2
-(0X73) char: s bitlength: 5 code: 0X1B
-(0X74) char: t bitlength: 4 code: 0XB
-(0X75) char: u bitlength: 6 code: 0X35
-(0X76) char: v bitlength: 7 code: 0X29
-(0X77) char: w bitlength: 6 code: 0X29
-(0X78) char: x bitlength: 9 code: 0XA3
-(0X79) char: y bitlength: 6 code: 0X1D
-(0X7A) char: z bitlength: 12 code: 0XA31
-(0X7B) char: { bitlength: 0 code: 0
-(0X7C) char: | bitlength: 0 code: 0
-(0X7D) char: } bitlength: 0 code: 0
-(0X7E) char: ~ bitlength: 0 code: 0
-(0X7F) char: NA bitlength: 0 code: 0
-(0X80) char: NA bitlength: 0 code: 0
-(0X81) char: NA bitlength: 0 code: 0
-(0X82) char: NA bitlength: 0 code: 0
-(0X83) char: NA bitlength: 0 code: 0
-(0X84) char: NA bitlength: 0 code: 0
-(0X85) char: NA bitlength: 0 code: 0
-(0X86) char: NA bitlength: 0 code: 0
-(0X87) char: NA bitlength: 0 code: 0
-(0X88) char: NA bitlength: 0 code: 0
-(0X89) char: NA bitlength: 0 code: 0
-(0X8A) char: NA bitlength: 0 code: 0
-(0X8B) char: NA bitlength: 0 code: 0
-(0X8C) char: NA bitlength: 0 code: 0
-(0X8D) char: NA bitlength: 0 code: 0
-(0X8E) char: NA bitlength: 0 code: 0
-(0X8F) char: NA bitlength: 0 code: 0
-(0X90) char: NA bitlength: 0 code: 0
-(0X91) char: NA bitlength: 0 code: 0
-(0X92) char: NA bitlength: 0 code: 0
-(0X93) char: NA bitlength: 0 code: 0
-(0X94) char: NA bitlength: 0 code: 0
-(0X95) char: NA bitlength: 0 code: 0
-(0X96) char: NA bitlength: 0 code: 0
-(0X97) char: NA bitlength: 0 code: 0
-(0X98) char: NA bitlength: 0 code: 0
-(0X99) char: NA bitlength: 0 code: 0
-(0X9A) char: NA bitlength: 0 code: 0
-(0X9B) char: NA bitlength: 0 code: 0
-(0X9C) char: NA bitlength: 0 code: 0
-(0X9D) char: NA bitlength: 0 code: 0
-(0X9E) char: NA bitlength: 0 code: 0
-(0X9F) char: NA bitlength: 0 code: 0
-(0XA0) char: NA bitlength: 0 code: 0
-(0XA1) char: NA bitlength: 0 code: 0
-(0XA2) char: NA bitlength: 0 code: 0
-(0XA3) char: NA bitlength: 0 code: 0
-(0XA4) char: NA bitlength: 0 code: 0
-(0XA5) char: NA bitlength: 0 code: 0
-(0XA6) char: NA bitlength: 0 code: 0
-(0XA7) char: NA bitlength: 0 code: 0
-(0XA8) char: NA bitlength: 0 code: 0
-(0XA9) char: NA bitlength: 0 code: 0
-(0XAA) char: NA bitlength: 0 code: 0
-(0XAB) char: NA bitlength: 0 code: 0
-(0XAC) char: NA bitlength: 0 code: 0
-(0XAD) char: NA bitlength: 0 code: 0
-(0XAE) char: NA bitlength: 0 code: 0
-(0XAF) char: NA bitlength: 0 code: 0
-(0XB0) char: NA bitlength: 0 code: 0
-(0XB1) char: NA bitlength: 0 code: 0
-(0XB2) char: NA bitlength: 0 code: 0
-(0XB3) char: NA bitlength: 0 code: 0
-(0XB4) char: NA bitlength: 0 code: 0
-(0XB5) char: NA bitlength: 0 code: 0
-(0XB6) char: NA bitlength: 0 code: 0
-(0XB7) char: NA bitlength: 0 code: 0
-(0XB8) char: NA bitlength: 0 code: 0
-(0XB9) char: NA bitlength: 0 code: 0
-(0XBA) char: NA bitlength: 0 code: 0
-(0XBB) char: NA bitlength: 0 code: 0
-(0XBC) char: NA bitlength: 0 code: 0
-(0XBD) char: NA bitlength: 0 code: 0
-(0XBE) char: NA bitlength: 0 code: 0
-(0XBF) char: NA bitlength: 0 code: 0
-(0XC0) char: NA bitlength: 0 code: 0
-(0XC1) char: NA bitlength: 0 code: 0
-(0XC2) char: NA bitlength: 0 code: 0
-(0XC3) char: NA bitlength: 0 code: 0
-(0XC4) char: NA bitlength: 0 code: 0
-(0XC5) char: NA bitlength: 0 code: 0
-(0XC6) char: NA bitlength: 0 code: 0
-(0XC7) char: NA bitlength: 0 code: 0
-(0XC8) char: NA bitlength: 0 code: 0
-(0XC9) char: NA bitlength: 0 code: 0
-(0XCA) char: NA bitlength: 0 code: 0
-(0XCB) char: NA bitlength: 0 code: 0
-(0XCC) char: NA bitlength: 0 code: 0
-(0XCD) char: NA bitlength: 0 code: 0
-(0XCE) char: NA bitlength: 0 code: 0
-(0XCF) char: NA bitlength: 0 code: 0
-(0XD0) char: NA bitlength: 0 code: 0
-(0XD1) char: NA bitlength: 0 code: 0
-(0XD2) char: NA bitlength: 0 code: 0
-(0XD3) char: NA bitlength: 0 code: 0
-(0XD4) char: NA bitlength: 0 code: 0
-(0XD5) char: NA bitlength: 0 code: 0
-(0XD6) char: NA bitlength: 0 code: 0
-(0XD7) char: NA bitlength: 0 code: 0
-(0XD8) char: NA bitlength: 0 code: 0
-(0XD9) char: NA bitlength: 0 code: 0
-(0XDA) char: NA bitlength: 0 code: 0
-(0XDB) char: NA bitlength: 0 code: 0
-(0XDC) char: NA bitlength: 0 code: 0
-(0XDD) char: NA bitlength: 0 code: 0
-(0XDE) char: NA bitlength: 0 code: 0
-(0XDF) char: NA bitlength: 0 code: 0
-(0XE0) char: NA bitlength: 0 code: 0
-(0XE1) char: NA bitlength: 0 code: 0
-(0XE2) char: NA bitlength: 0 code: 0
-(0XE3) char: NA bitlength: 0 code: 0
-(0XE4) char: NA bitlength: 0 code: 0
-(0XE5) char: NA bitlength: 0 code: 0
-(0XE6) char: NA bitlength: 0 code: 0
-(0XE7) char: NA bitlength: 0 code: 0
-(0XE8) char: NA bitlength: 0 code: 0
-(0XE9) char: NA bitlength: 0 code: 0
-(0XEA) char: NA bitlength: 0 code: 0
-(0XEB) char: NA bitlength: 0 code: 0
-(0XEC) char: NA bitlength: 0 code: 0
-(0XED) char: NA bitlength: 0 code: 0
-(0XEE) char: NA bitlength: 0 code: 0
-(0XEF) char: NA bitlength: 0 code: 0
-(0XF0) char: NA bitlength: 0 code: 0
-(0XF1) char: NA bitlength: 0 code: 0
-(0XF2) char: NA bitlength: 0 code: 0
-(0XF3) char: NA bitlength: 0 code: 0
-(0XF4) char: NA bitlength: 0 code: 0
-(0XF5) char: NA bitlength: 0 code: 0
-(0XF6) char: NA bitlength: 0 code: 0
-(0XF7) char: NA bitlength: 0 code: 0
-(0XF8) char: NA bitlength: 0 code: 0
-(0XF9) char: NA bitlength: 0 code: 0
-(0XFA) char: NA bitlength: 0 code: 0
-(0XFB) char: NA bitlength: 0 code: 0
-(0XFC) char: NA bitlength: 0 code: 0
-(0XFD) char: NA bitlength: 0 code: 0
-(0XFE) char: NA bitlength: 0 code: 0
-(0XFF) char: NA bitlength: 0 code: 0
+(0) char: NA bitlength: 0 code: 
+(0X1) char: NA bitlength: 0 code: 
+(0X2) char: NA bitlength: 0 code: 
+(0X3) char: NA bitlength: 0 code: 
+(0X4) char: NA bitlength: 0 code: 
+(0X5) char: NA bitlength: 0 code: 
+(0X6) char: NA bitlength: 0 code: 
+(0X7) char: NA bitlength: 0 code: 
+(0X8) char: NA bitlength: 0 code: 
+(0X9) char: NA bitlength: 0 code: 
+(0XA) char: NA bitlength: 6 code: 110100
+(0XB) char: NA bitlength: 0 code: 
+(0XC) char: NA bitlength: 0 code: 
+(0XD) char: NA bitlength: 0 code: 
+(0XE) char: NA bitlength: 0 code: 
+(0XF) char: NA bitlength: 0 code: 
+(0X10) char: NA bitlength: 0 code: 
+(0X11) char: NA bitlength: 0 code: 
+(0X12) char: NA bitlength: 0 code: 
+(0X13) char: NA bitlength: 0 code: 
+(0X14) char: NA bitlength: 0 code: 
+(0X15) char: NA bitlength: 0 code: 
+(0X16) char: NA bitlength: 0 code: 
+(0X17) char: NA bitlength: 0 code: 
+(0X18) char: NA bitlength: 0 code: 
+(0X19) char: NA bitlength: 0 code: 
+(0X1A) char: NA bitlength: 0 code: 
+(0X1B) char: NA bitlength: 0 code: 
+(0X1C) char: NA bitlength: 0 code: 
+(0X1D) char: NA bitlength: 0 code: 
+(0X1E) char: NA bitlength: 0 code: 
+(0X1F) char: NA bitlength: 0 code: 
+(0X20) char:   bitlength: 3 code: 111
+(0X21) char: ! bitlength: 12 code: 010111000011
+(0X22) char: " bitlength: 8 code: 11000000
+(0X23) char: # bitlength: 16 code: 1100001000000010
+(0X24) char: $ bitlength: 15 code: 011110001001100
+(0X25) char: % bitlength: 16 code: 1100001000000011
+(0X26) char: & bitlength: 15 code: 011110001001101
+(0X27) char: ' bitlength: 8 code: 01010000
+(0X28) char: ( bitlength: 12 code: 110000101101
+(0X29) char: ) bitlength: 12 code: 110000101110
+(0X2A) char: * bitlength: 11 code: 01111001110
+(0X2B) char: + bitlength: 0 code: 
+(0X2C) char: , bitlength: 6 code: 010110
+(0X2D) char: - bitlength: 8 code: 01111010
+(0X2E) char: . bitlength: 7 code: 1010000
+(0X2F) char: / bitlength: 11 code: 01011100000
+(0X30) char: 0 bitlength: 12 code: 110000100001
+(0X31) char: 1 bitlength: 10 code: 0101110001
+(0X32) char: 2 bitlength: 12 code: 010111000010
+(0X33) char: 3 bitlength: 13 code: 1100001011111
+(0X34) char: 4 bitlength: 13 code: 0111100010100
+(0X35) char: 5 bitlength: 13 code: 1100001011000
+(0X36) char: 6 bitlength: 13 code: 0111100010010
+(0X37) char: 7 bitlength: 13 code: 1100001000001
+(0X38) char: 8 bitlength: 13 code: 0111100010101
+(0X39) char: 9 bitlength: 12 code: 011110001000
+(0X3A) char: : bitlength: 11 code: 01111001111
+(0X3B) char: ; bitlength: 13 code: 1100001011001
+(0X3C) char: < bitlength: 0 code: 
+(0X3D) char: = bitlength: 0 code: 
+(0X3E) char: > bitlength: 0 code: 
+(0X3F) char: ? bitlength: 11 code: 11000010001
+(0X40) char: @ bitlength: 15 code: 011110001001110
+(0X41) char: A bitlength: 8 code: 01111011
+(0X42) char: B bitlength: 10 code: 0111100011
+(0X43) char: C bitlength: 9 code: 010111010
+(0X44) char: D bitlength: 9 code: 010100010
+(0X45) char: E bitlength: 9 code: 101000111
+(0X46) char: F bitlength: 10 code: 1010001001
+(0X47) char: G bitlength: 9 code: 101000101
+(0X48) char: H bitlength: 10 code: 1010001000
+(0X49) char: I bitlength: 8 code: 11000001
+(0X4A) char: J bitlength: 12 code: 011110001011
+(0X4B) char: K bitlength: 13 code: 1100001011110
+(0X4C) char: L bitlength: 10 code: 1010001101
+(0X4D) char: M bitlength: 10 code: 0111100100
+(0X4E) char: N bitlength: 10 code: 1100001001
+(0X4F) char: O bitlength: 10 code: 1100001101
+(0X50) char: P bitlength: 9 code: 010111001
+(0X51) char: Q bitlength: 15 code: 011110001001111
+(0X52) char: R bitlength: 10 code: 1100001010
+(0X53) char: S bitlength: 9 code: 010111011
+(0X54) char: T bitlength: 9 code: 110000111
+(0X55) char: U bitlength: 10 code: 0111100110
+(0X56) char: V bitlength: 12 code: 101000110000
+(0X57) char: W bitlength: 11 code: 11000011001
+(0X58) char: X bitlength: 15 code: 110000100000000
+(0X59) char: Y bitlength: 11 code: 11000011000
+(0X5A) char: Z bitlength: 0 code: 
+(0X5B) char: [ bitlength: 15 code: 110000100000010
+(0X5C) char: \ bitlength: 0 code: 
+(0X5D) char: ] bitlength: 15 code: 110000100000011
+(0X5E) char: ^ bitlength: 0 code: 
+(0X5F) char: _ bitlength: 10 code: 0111100101
+(0X60) char: ` bitlength: 0 code: 
+(0X61) char: a bitlength: 4 code: 0110
+(0X62) char: b bitlength: 6 code: 010101
+(0X63) char: c bitlength: 6 code: 110001
+(0X64) char: d bitlength: 5 code: 10010
+(0X65) char: e bitlength: 3 code: 000
+(0X66) char: f bitlength: 6 code: 101011
+(0X67) char: g bitlength: 6 code: 011111
+(0X68) char: h bitlength: 5 code: 11001
+(0X69) char: i bitlength: 4 code: 0100
+(0X6A) char: j bitlength: 9 code: 011110000
+(0X6B) char: k bitlength: 7 code: 0101111
+(0X6C) char: l bitlength: 5 code: 10011
+(0X6D) char: m bitlength: 6 code: 101010
+(0X6E) char: n bitlength: 4 code: 0011
+(0X6F) char: o bitlength: 4 code: 1000
+(0X70) char: p bitlength: 6 code: 011100
+(0X71) char: q bitlength: 11 code: 10100011001
+(0X72) char: r bitlength: 4 code: 0010
+(0X73) char: s bitlength: 5 code: 11011
+(0X74) char: t bitlength: 4 code: 1011
+(0X75) char: u bitlength: 6 code: 110101
+(0X76) char: v bitlength: 7 code: 0101001
+(0X77) char: w bitlength: 6 code: 101001
+(0X78) char: x bitlength: 9 code: 010100011
+(0X79) char: y bitlength: 6 code: 011101
+(0X7A) char: z bitlength: 12 code: 101000110001
+(0X7B) char: { bitlength: 0 code: 
+(0X7C) char: | bitlength: 0 code: 
+(0X7D) char: } bitlength: 0 code: 
+(0X7E) char: ~ bitlength: 0 code: 
+(0X7F) char: NA bitlength: 0 code: 
+(0X80) char: NA bitlength: 0 code: 
+(0X81) char: NA bitlength: 0 code: 
+(0X82) char: NA bitlength: 0 code: 
+(0X83) char: NA bitlength: 0 code: 
+(0X84) char: NA bitlength: 0 code: 
+(0X85) char: NA bitlength: 0 code: 
+(0X86) char: NA bitlength: 0 code: 
+(0X87) char: NA bitlength: 0 code: 
+(0X88) char: NA bitlength: 0 code: 
+(0X89) char: NA bitlength: 0 code: 
+(0X8A) char: NA bitlength: 0 code: 
+(0X8B) char: NA bitlength: 0 code: 
+(0X8C) char: NA bitlength: 0 code: 
+(0X8D) char: NA bitlength: 0 code: 
+(0X8E) char: NA bitlength: 0 code: 
+(0X8F) char: NA bitlength: 0 code: 
+(0X90) char: NA bitlength: 0 code: 
+(0X91) char: NA bitlength: 0 code: 
+(0X92) char: NA bitlength: 0 code: 
+(0X93) char: NA bitlength: 0 code: 
+(0X94) char: NA bitlength: 0 code: 
+(0X95) char: NA bitlength: 0 code: 
+(0X96) char: NA bitlength: 0 code: 
+(0X97) char: NA bitlength: 0 code: 
+(0X98) char: NA bitlength: 0 code: 
+(0X99) char: NA bitlength: 0 code: 
+(0X9A) char: NA bitlength: 0 code: 
+(0X9B) char: NA bitlength: 0 code: 
+(0X9C) char: NA bitlength: 0 code: 
+(0X9D) char: NA bitlength: 0 code: 
+(0X9E) char: NA bitlength: 0 code: 
+(0X9F) char: NA bitlength: 0 code: 
+(0XA0) char: NA bitlength: 0 code: 
+(0XA1) char: NA bitlength: 0 code: 
+(0XA2) char: NA bitlength: 0 code: 
+(0XA3) char: NA bitlength: 0 code: 
+(0XA4) char: NA bitlength: 0 code: 
+(0XA5) char: NA bitlength: 0 code: 
+(0XA6) char: NA bitlength: 0 code: 
+(0XA7) char: NA bitlength: 0 code: 
+(0XA8) char: NA bitlength: 0 code: 
+(0XA9) char: NA bitlength: 0 code: 
+(0XAA) char: NA bitlength: 0 code: 
+(0XAB) char: NA bitlength: 0 code: 
+(0XAC) char: NA bitlength: 0 code: 
+(0XAD) char: NA bitlength: 0 code: 
+(0XAE) char: NA bitlength: 0 code: 
+(0XAF) char: NA bitlength: 0 code: 
+(0XB0) char: NA bitlength: 0 code: 
+(0XB1) char: NA bitlength: 0 code: 
+(0XB2) char: NA bitlength: 0 code: 
+(0XB3) char: NA bitlength: 0 code: 
+(0XB4) char: NA bitlength: 0 code: 
+(0XB5) char: NA bitlength: 0 code: 
+(0XB6) char: NA bitlength: 0 code: 
+(0XB7) char: NA bitlength: 0 code: 
+(0XB8) char: NA bitlength: 0 code: 
+(0XB9) char: NA bitlength: 0 code: 
+(0XBA) char: NA bitlength: 0 code: 
+(0XBB) char: NA bitlength: 0 code: 
+(0XBC) char: NA bitlength: 0 code: 
+(0XBD) char: NA bitlength: 0 code: 
+(0XBE) char: NA bitlength: 0 code: 
+(0XBF) char: NA bitlength: 0 code: 
+(0XC0) char: NA bitlength: 0 code: 
+(0XC1) char: NA bitlength: 0 code: 
+(0XC2) char: NA bitlength: 0 code: 
+(0XC3) char: NA bitlength: 0 code: 
+(0XC4) char: NA bitlength: 0 code: 
+(0XC5) char: NA bitlength: 0 code: 
+(0XC6) char: NA bitlength: 0 code: 
+(0XC7) char: NA bitlength: 0 code: 
+(0XC8) char: NA bitlength: 0 code: 
+(0XC9) char: NA bitlength: 0 code: 
+(0XCA) char: NA bitlength: 0 code: 
+(0XCB) char: NA bitlength: 0 code: 
+(0XCC) char: NA bitlength: 0 code: 
+(0XCD) char: NA bitlength: 0 code: 
+(0XCE) char: NA bitlength: 0 code: 
+(0XCF) char: NA bitlength: 0 code: 
+(0XD0) char: NA bitlength: 0 code: 
+(0XD1) char: NA bitlength: 0 code: 
+(0XD2) char: NA bitlength: 0 code: 
+(0XD3) char: NA bitlength: 0 code: 
+(0XD4) char: NA bitlength: 0 code: 
+(0XD5) char: NA bitlength: 0 code: 
+(0XD6) char: NA bitlength: 0 code: 
+(0XD7) char: NA bitlength: 0 code: 
+(0XD8) char: NA bitlength: 0 code: 
+(0XD9) char: NA bitlength: 0 code: 
+(0XDA) char: NA bitlength: 0 code: 
+(0XDB) char: NA bitlength: 0 code: 
+(0XDC) char: NA bitlength: 0 code: 
+(0XDD) char: NA bitlength: 0 code: 
+(0XDE) char: NA bitlength: 0 code: 
+(0XDF) char: NA bitlength: 0 code: 
+(0XE0) char: NA bitlength: 0 code: 
+(0XE1) char: NA bitlength: 0 code: 
+(0XE2) char: NA bitlength: 0 code: 
+(0XE3) char: NA bitlength: 0 code: 
+(0XE4) char: NA bitlength: 0 code: 
+(0XE5) char: NA bitlength: 0 code: 
+(0XE6) char: NA bitlength: 0 code: 
+(0XE7) char: NA bitlength: 0 code: 
+(0XE8) char: NA bitlength: 0 code: 
+(0XE9) char: NA bitlength: 0 code: 
+(0XEA) char: NA bitlength: 0 code: 
+(0XEB) char: NA bitlength: 0 code: 
+(0XEC) char: NA bitlength: 0 code: 
+(0XED) char: NA bitlength: 0 code: 
+(0XEE) char: NA bitlength: 0 code: 
+(0XEF) char: NA bitlength: 0 code: 
+(0XF0) char: NA bitlength: 0 code: 
+(0XF1) char: NA bitlength: 0 code: 
+(0XF2) char: NA bitlength: 0 code: 
+(0XF3) char: NA bitlength: 0 code: 
+(0XF4) char: NA bitlength: 0 code: 
+(0XF5) char: NA bitlength: 0 code: 
+(0XF6) char: NA bitlength: 0 code: 
+(0XF7) char: NA bitlength: 0 code: 
+(0XF8) char: NA bitlength: 0 code: 
+(0XF9) char: NA bitlength: 0 code: 
+(0XFA) char: NA bitlength: 0 code: 
+(0XFB) char: NA bitlength: 0 code: 
+(0XFC) char: NA bitlength: 0 code: 
+(0XFD) char: NA bitlength: 0 code: 
+(0XFE) char: NA bitlength: 0 code: 
+(0XFF) char: NA bitlength: 0 code: 

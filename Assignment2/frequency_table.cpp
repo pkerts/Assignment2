@@ -9,6 +9,8 @@
 #include <cctype>
 #include <cassert>
 #include <memory>
+#include <bitset>
+#include <cmath>
 
 const int NUM_SECONDS = 5;
 
@@ -122,7 +124,6 @@ void Heap<Priority, Data>::encode(HeapNode* ptr, unsigned char bitlength, unsign
 template<typename Priority, typename Data>
 void Heap<Priority, Data>::PrintCodedSymbols()
 {
-
 	for (auto i = 0; i < UCHAR_MAX + 1; ++i)
 	{
 		std::cerr << "(" << std::hex << std::uppercase << std::showbase << i << ") char: ";
@@ -130,7 +131,103 @@ void Heap<Priority, Data>::PrintCodedSymbols()
 			std::cerr << (unsigned char)i;
 		else
 			std::cerr << "NA";
-		std::cerr << " bitlength: " << std::dec << (int)coded_symbols[i].length << " code: " << std::hex << std::uppercase << std::showbase << coded_symbols[i].bitpattern << std::endl;
+		std::cerr << " bitlength: " << std::dec << (int)coded_symbols[i].length << " code: " << decimal_to_binary(coded_symbols[i]) << std::endl;
+	}
+}
+
+template<typename Priority, typename Data>
+void Heap<Priority, Data>::compress()
+{
+	std::fstream huff_file("compressed.huff", std::ios::out | std::ios::binary | std::ios::trunc);
+	
+	int byte_index = 0;
+	unsigned char bin_num = {};
+	int count = 0;
+
+	for (auto i = 0; i < UCHAR_MAX + 1; ++i)
+	{
+		auto length = coded_symbols[i].length;
+		static const int num_of_bytes = std::ceil(length / 8);
+		inline struct Record
+		{
+			unsigned char bitlength = length;
+			unsigned char code[4];
+		};
+		Record record;
+		byte_index = 0;
+		bin_num = 0;
+		count = 0;
+
+		auto binary_decimal = coded_symbols[i].bitpattern;
+		while (binary_decimal >= 1)
+		{
+			bin_num << 1;
+			if ((binary_decimal % 2) == 1)
+			{
+				bin_num |= 1;
+			}
+			count += 1;
+			binary_decimal /= 2;
+
+			if (count == 8)
+			{
+				record.code[byte_index] = bin_num;
+				++byte_index;
+				count = 0;
+				bin_num = 0;
+			}
+		}
+		if (count)
+		{
+			auto pad = 8 - count;
+			bin_num << pad;
+			record.code[byte_index] = bin_num;
+			count = 0;
+			bin_num = 0;
+		}
+		huff_file.write(reinterpret_cast<char*>(&record), sizeof(record));
+	}
+	huff_file.close();
+}
+
+//template<typename Priority, typename Data>
+//void Heap<Priority, Data>::decompress()
+//{
+//	std::fstream huff_infile("compressed.huff", std::ios::in | std::ios::binary);
+//	huff_infile.seekg(0);
+//	std::cout << std::endl;
+//	size_t num_of_bytes = 0;
+//	for (auto i = 0; i < UCHAR_MAX + 1; ++i)
+//	{
+//		huff_infile.read(reinterpret_cast<char*>(&inrecord), sizeof(inrecord));
+//		// huff_infile.read(reinterpret_cast<char*>(&inrecord.length), sizeof(inrecord.length));
+//		std::cout << "length: " << (int)inrecord.length << " bitpattern: ";
+//
+//		if (inrecord.length)
+//		{
+//			num_of_bytes = std::ceil(inrecord.length / 8);
+//			// huff_infile.read(reinterpret_cast<char*>(&inrecord.code[0]), num_of_bytes);
+//			for (auto j = 0; j < num_of_bytes; ++j)
+//			{
+//				std::cout << decimal_to_binary(inrecord.code[j]);
+//			}
+//		}
+//		/*else
+//		{
+//			huff_infile.read(reinterpret_cast<char*>(&inrecord.code), sizeof (inrecord.code));
+//		}*/
+//		std::cout << std::endl;
+//	}
+//}
+
+template<typename Priority, typename Data>
+void Heap<Priority, Data>::PrintSymbols()
+{
+	std::ofstream huff("compressed.huff");
+	for (auto i = 0; i < UCHAR_MAX + 1; ++i)
+	{
+		std::bitset<64> bb{ coded_symbols[i].bitpattern };
+		huff << bb.to_string() << std::endl;
 	}
 }
 
@@ -325,6 +422,55 @@ huffman_tree::~huffman_tree()
 {
 }
 
+template<typename Priority, typename Data>
+template<typename T>
+std::string Heap<Priority, Data>::decimal_to_binary(T binary_decimal)
+{
+	auto length = (sizeof(T)) * 8;
+	std::string binary = "";
+	int count = 0;
+	for (int g = (length - 1); g > -1; --g)
+	{
+		auto subtrahend = std::pow(2, g);
+		if ((binary_decimal - subtrahend) > -1)
+		{
+			binary_decimal -= subtrahend;
+			binary += "1";
+			count += 1;
+		}
+		else
+		{
+			binary += "0";
+			if (count)
+				count += 1;
+		}
+	}
+	return binary.substr((length-count), length);
+	// return binary;
+}
+
+template<typename Priority, typename Data>
+std::string Heap<Priority, Data>::decimal_to_binary(const coded_symbol symbol)
+{
+	int length = (symbol.length - 1);
+	std::string binary = "";
+	auto binary_decimal = symbol.bitpattern;
+	for (int g = length; g > -1; --g)
+	{
+		auto subtrahend = std::pow(2, g);
+		if ((binary_decimal - subtrahend) > -1)
+		{
+			binary_decimal -= subtrahend;
+			binary += "1";
+		}
+		else
+		{
+			binary += "0";
+		}
+	}
+	return binary;
+}
+
 auto main()->int {
 	Heap<unsigned int, unsigned char> h;
 	frequency_table ft;
@@ -333,7 +479,7 @@ auto main()->int {
 	if (file)
 	{
 		char ch;
-		while (std::cin.get(ch))
+		while (file.get(ch))
 		{
 			ft.MapMaker(ch);
 		}
@@ -353,6 +499,14 @@ auto main()->int {
 	h.encode();
 
 	h.PrintCodedSymbols();
+
+	h.PrintSymbols();
+
+	h.compress();
+	h.decompress();
+
+	unsigned char f = 255;
+	std::cout << h.decimal_to_binary(f) << std::endl;
 
 	// h.pop();
 
