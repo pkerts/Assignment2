@@ -78,6 +78,11 @@ void bitstreams::getByte(unsigned char byte)
 		bits.emplace_back(getBit(byte, i));
 	}
 }
+int bitstreams::putLong(unsigned long long bitpattern)
+{
+
+	return 0;
+}
 int bitstreams::putBit(unsigned int bit)
 {
 	// Using our incoming bit, we are setting the leftmost bit of our unsigned char byte buffer

@@ -14,6 +14,7 @@ public:
 
 	unsigned int getBit(unsigned char bit, int position);
 	void getByte(unsigned char byte);
+	int putLong(unsigned long long bitpattern);
 	int putBit(unsigned int bit);
 	int putByte(unsigned char byte);
 	void flush(int bits_buffered);

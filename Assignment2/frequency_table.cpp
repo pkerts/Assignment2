@@ -135,60 +135,64 @@ void Heap<Priority, Data>::PrintCodedSymbols()
 	}
 }
 
-template<typename Priority, typename Data>
-void Heap<Priority, Data>::compress()
-{
-	std::fstream huff_file("compressed.huff", std::ios::out | std::ios::binary | std::ios::trunc);
-	
-	int byte_index = 0;
-	unsigned char bin_num = {};
-	int count = 0;
+// Compress
 
-	for (auto i = 0; i < UCHAR_MAX + 1; ++i)
-	{
-		auto length = coded_symbols[i].length;
-		static const int num_of_bytes = std::ceil(length / 8);
-		inline struct Record
-		{
-			unsigned char bitlength = length;
-			unsigned char code[4];
-		};
-		Record record;
-		byte_index = 0;
-		bin_num = 0;
-		count = 0;
+//template<typename Priority, typename Data>
+//void Heap<Priority, Data>::compress()
+//{
+//	std::fstream huff_file("compressed.huff", std::ios::out | std::ios::binary | std::ios::trunc);
+//	
+//	int byte_index = 0;
+//	unsigned char bin_num = {};
+//	int count = 0;
+//
+//	for (auto i = 0; i < UCHAR_MAX + 1; ++i)
+//	{
+//		auto length = coded_symbols[i].length;
+//		static const int num_of_bytes = std::ceil(length / 8);
+//		inline struct Record
+//		{
+//			unsigned char bitlength = length;
+//			unsigned char code[4];
+//		};
+//		Record record;
+//		byte_index = 0;
+//		bin_num = 0;
+//		count = 0;
+//
+//		auto binary_decimal = coded_symbols[i].bitpattern;
+//		while (binary_decimal >= 1)
+//		{
+//			bin_num << 1;
+//			if ((binary_decimal % 2) == 1)
+//			{
+//				bin_num |= 1;
+//			}
+//			count += 1;
+//			binary_decimal /= 2;
+//
+//			if (count == 8)
+//			{
+//				record.code[byte_index] = bin_num;
+//				++byte_index;
+//				count = 0;
+//				bin_num = 0;
+//			}
+//		}
+//		if (count)
+//		{
+//			auto pad = 8 - count;
+//			bin_num << pad;
+//			record.code[byte_index] = bin_num;
+//			count = 0;
+//			bin_num = 0;
+//		}
+//		huff_file.write(reinterpret_cast<char*>(&record), sizeof(record));
+//	}
+//	huff_file.close();
+//}
 
-		auto binary_decimal = coded_symbols[i].bitpattern;
-		while (binary_decimal >= 1)
-		{
-			bin_num << 1;
-			if ((binary_decimal % 2) == 1)
-			{
-				bin_num |= 1;
-			}
-			count += 1;
-			binary_decimal /= 2;
-
-			if (count == 8)
-			{
-				record.code[byte_index] = bin_num;
-				++byte_index;
-				count = 0;
-				bin_num = 0;
-			}
-		}
-		if (count)
-		{
-			auto pad = 8 - count;
-			bin_num << pad;
-			record.code[byte_index] = bin_num;
-			count = 0;
-			bin_num = 0;
-		}
-		huff_file.write(reinterpret_cast<char*>(&record), sizeof(record));
-	}
-	huff_file.close();
-}
+// Decompress
 
 //template<typename Priority, typename Data>
 //void Heap<Priority, Data>::decompress()
@@ -469,6 +473,19 @@ std::string Heap<Priority, Data>::decimal_to_binary(const coded_symbol symbol)
 		}
 	}
 	return binary;
+}
+
+template<typename Priority, typename Data>
+void Heap<Priority, Data>::compress()
+{
+	std::fstream huff_file("compressed.huff", std::ios::in | std::ios::out | std::ios::binary);
+
+	for (auto i = 0; i < UCHAR_MAX + 1; ++i)
+	{
+		huff_file.write(&coded_symbols[i], sizeof(coded_symbols[i]));
+	}
+
+
 }
 
 auto main()->int {
