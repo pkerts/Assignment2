@@ -62,7 +62,7 @@ public:
 	template<typename T>
 	std::string decimal_to_binary(T binary_decimal);
 	std::string decimal_to_binary(const coded_symbol symbol);
-	void compress();
+	void compress(std::string filename);
 	void decompress();
 
 	HeapNode* getNode(unsigned int priority, unsigned char data, HeapNode* left, HeapNode* right);

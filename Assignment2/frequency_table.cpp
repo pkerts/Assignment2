@@ -135,8 +135,6 @@ void Heap<Priority, Data>::PrintCodedSymbols()
 	}
 }
 
-// Compress
-
 //template<typename Priority, typename Data>
 //void Heap<Priority, Data>::compress()
 //{
@@ -145,18 +143,19 @@ void Heap<Priority, Data>::PrintCodedSymbols()
 //	int byte_index = 0;
 //	unsigned char bin_num = {};
 //	int count = 0;
+//	unsigned char length = 0;
+//
 //
 //	for (auto i = 0; i < UCHAR_MAX + 1; ++i)
 //	{
-//		auto length = coded_symbols[i].length;
-//		static const int num_of_bytes = std::ceil(length / 8);
-//		inline struct Record
-//		{
-//			unsigned char bitlength = length;
-//			unsigned char code[4];
-//		};
-//		Record record;
-//		byte_index = 0;
+//
+//		// WRITE THE LENGTH
+//		length = coded_symbols[i].length;
+//		huff_file.write(reinterpret_cast<char*>(&length), sizeof(unsigned char));
+//
+//
+//
+//
 //		bin_num = 0;
 //		count = 0;
 //
@@ -173,8 +172,7 @@ void Heap<Priority, Data>::PrintCodedSymbols()
 //
 //			if (count == 8)
 //			{
-//				record.code[byte_index] = bin_num;
-//				++byte_index;
+//				huff_file.write(reinterpret_cast<char*>(&bin_num), sizeof(unsigned char));
 //				count = 0;
 //				bin_num = 0;
 //			}
@@ -183,16 +181,56 @@ void Heap<Priority, Data>::PrintCodedSymbols()
 //		{
 //			auto pad = 8 - count;
 //			bin_num << pad;
-//			record.code[byte_index] = bin_num;
+//			huff_file.write(reinterpret_cast<char*>(&bin_num), sizeof(unsigned char));
 //			count = 0;
 //			bin_num = 0;
 //		}
-//		huff_file.write(reinterpret_cast<char*>(&record), sizeof(record));
 //	}
+//
+//	int32_t number_of_symbols_in_the_file = 84;
+//	huff_file.write(reinterpret_cast<char*>(&number_of_symbols_in_the_file), sizeof(int32_t));
+//
+//	for (auto i = 0; i < UCHAR_MAX + 1; ++i)
+//	{
+//
+//		// WRITE THE LENGTH
+//		if (coded_symbols[i].length != 0)
+//		{
+//			bin_num = 0;
+//			count = 0;
+//
+//			auto binary_decimal = coded_symbols[i].bitpattern;
+//			while (binary_decimal >= 1)
+//			{
+//				bin_num << 1;
+//				if ((binary_decimal % 2) == 1)
+//				{
+//					bin_num |= 1;
+//				}
+//				count += 1;
+//				binary_decimal /= 2;
+//
+//				if (count == 8)
+//				{
+//					huff_file.write(reinterpret_cast<char*>(&bin_num), sizeof(unsigned char));
+//					count = 0;
+//					bin_num = 0;
+//				}
+//			}
+//			if (count)
+//			{
+//				auto pad = 8 - count;
+//				bin_num << pad;
+//				huff_file.write(reinterpret_cast<char*>(&bin_num), sizeof(unsigned char));
+//				count = 0;
+//				bin_num = 0;
+//			}
+//		}
+//		
+//	}
+//
 //	huff_file.close();
 //}
-
-// Decompress
 
 //template<typename Priority, typename Data>
 //void Heap<Priority, Data>::decompress()
@@ -201,10 +239,18 @@ void Heap<Priority, Data>::PrintCodedSymbols()
 //	huff_infile.seekg(0);
 //	std::cout << std::endl;
 //	size_t num_of_bytes = 0;
+//
+//	unsigned char length = 0;
+//	// unsigned char 
+//
 //	for (auto i = 0; i < UCHAR_MAX + 1; ++i)
 //	{
-//		huff_infile.read(reinterpret_cast<char*>(&inrecord), sizeof(inrecord));
-//		// huff_infile.read(reinterpret_cast<char*>(&inrecord.length), sizeof(inrecord.length));
+//		huff_infile.read(reinterpret_cast<char*>(&length), sizeof(length));
+//		for (auto j = 0; j < length; ++j)
+//		{
+//			
+//		}
+//
 //		std::cout << "length: " << (int)inrecord.length << " bitpattern: ";
 //
 //		if (inrecord.length)
@@ -475,18 +521,55 @@ std::string Heap<Priority, Data>::decimal_to_binary(const coded_symbol symbol)
 	return binary;
 }
 
-template<typename Priority, typename Data>
-void Heap<Priority, Data>::compress()
+template <typename Priority, typename Data>
+void Heap<Priority, Data>::compress(std::string filename)
 {
-	std::fstream huff_file("compressed.huff", std::ios::in | std::ios::out | std::ios::binary);
+	std::fstream huff(filename, std::ios::out | std::ios::binary);
+	unsigned char bin_num {0};
+	int count = 0;
 
 	for (auto i = 0; i < UCHAR_MAX + 1; ++i)
 	{
-		huff_file.write(&coded_symbols[i], sizeof(coded_symbols[i]));
+		auto length = coded_symbols[i].length;
+		// TEST
+		std::cout << "i: " << i << "\n" << "length: " << (int)length << std::endl;
+		huff.write(reinterpret_cast<char*>(&coded_symbols[i].length), sizeof(unsigned char));
+		auto binary_decimal = coded_symbols[i].bitpattern;
+		std::bitset<64> og{ binary_decimal };
+		std::cout << "og: " << og.to_string() << std::endl;
+		for (int g = length; g > 0; --g)
+		{
+			bin_num <<= 1;
+			auto subtrahend = std::pow(2, (g-1));
+			if ((binary_decimal - subtrahend) > -1)
+			{
+				binary_decimal -= subtrahend;
+				bin_num |= 1;
+			}
+			++count;
+
+			if (count == 8)
+			{
+				huff.write(reinterpret_cast<char*>(&bin_num), sizeof(unsigned char));
+				std::bitset<8> inhere{ bin_num };
+				std::cout << inhere.to_string();
+				bin_num = 0;
+				count = 0;
+			}
+		}
+		if (count)
+		{
+			bin_num <<= (8 - count);
+			huff.write(reinterpret_cast<char*>(&bin_num), sizeof(unsigned char));
+			std::bitset<8> inhere2{ bin_num };
+			std::cout << inhere2.to_string();
+			bin_num = 0;
+			count = 0;
+		}
+		std::cout << std::endl << std::endl;
 	}
-
-
 }
+
 
 auto main()->int {
 	Heap<unsigned int, unsigned char> h;
@@ -519,11 +602,12 @@ auto main()->int {
 
 	h.PrintSymbols();
 
-	h.compress();
-	h.decompress();
+	h.compress("yuup2.huff");
 
-	unsigned char f = 255;
-	std::cout << h.decimal_to_binary(f) << std::endl;
+	// h.decompress();
+
+	// unsigned char f = 255;
+	// std::cout << h.decimal_to_binary(f) << std::endl;
 
 	// h.pop();
 

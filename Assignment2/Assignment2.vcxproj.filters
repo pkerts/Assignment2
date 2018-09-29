@@ -35,5 +35,8 @@
     <ClCompile Include="frequency_table.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="huff.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

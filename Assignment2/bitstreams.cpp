@@ -78,11 +78,6 @@ void bitstreams::getByte(unsigned char byte)
 		bits.emplace_back(getBit(byte, i));
 	}
 }
-int bitstreams::putLong(unsigned long long bitpattern)
-{
-
-	return 0;
-}
 int bitstreams::putBit(unsigned int bit)
 {
 	// Using our incoming bit, we are setting the leftmost bit of our unsigned char byte buffer
@@ -114,6 +109,13 @@ void bitstreams::flush()
 	buffer = buffer << 8;
 }
 
+void bitstreams::doit(std::ofstream file, unsigned char byte)
+{
+	file.write(reinterpret_cast<char*>(&byte), sizeof(unsigned char));
+}
+
 //auto main()->int {
-//	return 0;
+//	bitstreams bs;
+//	bs.read("input.txt");
+//	bs.write("yayyay.txt");
 //}
