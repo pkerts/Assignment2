@@ -18,9 +18,8 @@ public:
 	int putByte(unsigned char byte);
 	void flush(int bits_buffered);
 	void flush();
-	void doit(std::ofstream file, unsigned char byte);
+
 private:
 	unsigned char buffer { 0 };
-	std::vector<unsigned int> bits;
-	std::vector<unsigned char> bytes;
+	int position { 0 };
 };

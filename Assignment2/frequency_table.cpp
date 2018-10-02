@@ -528,15 +528,18 @@ void Heap<Priority, Data>::compress(std::string filename)
 	unsigned char bin_num {0};
 	int count = 0;
 
-	for (auto i = 0; i < UCHAR_MAX + 1; ++i)
+	for (auto i = 0; i < UCHAR_MAX + 1; ++i) // For each coded symbol in the table
 	{
-		auto length = coded_symbols[i].length;
-		// TEST
+		// Write variable length records
+		auto length = coded_symbols[i].length; // Write length
 		std::cout << "i: " << i << "\n" << "length: " << (int)length << std::endl;
 		huff.write(reinterpret_cast<char*>(&coded_symbols[i].length), sizeof(unsigned char));
+
 		auto binary_decimal = coded_symbols[i].bitpattern;
-		std::bitset<64> og{ binary_decimal };
-		std::cout << "og: " << og.to_string() << std::endl;
+		std::bitset<64> og{ binary_decimal }; // TEST
+		std::cout << "og: " << og.to_string() << std::endl; // TEST
+
+		// Convert unsigned long long to bytes and write them
 		for (int g = length; g > 0; --g)
 		{
 			bin_num <<= 1;
@@ -547,22 +550,21 @@ void Heap<Priority, Data>::compress(std::string filename)
 				bin_num |= 1;
 			}
 			++count;
-
 			if (count == 8)
 			{
 				huff.write(reinterpret_cast<char*>(&bin_num), sizeof(unsigned char));
-				std::bitset<8> inhere{ bin_num };
-				std::cout << inhere.to_string();
+				std::bitset<8> inhere{ bin_num }; // TEST
+				std::cout << inhere.to_string(); // TEST
 				bin_num = 0;
 				count = 0;
 			}
 		}
 		if (count)
 		{
-			bin_num <<= (8 - count);
+			bin_num <<= (8 - count); // pad
 			huff.write(reinterpret_cast<char*>(&bin_num), sizeof(unsigned char));
-			std::bitset<8> inhere2{ bin_num };
-			std::cout << inhere2.to_string();
+			std::bitset<8> inhere2{ bin_num }; // TEST
+			std::cout << inhere2.to_string(); // TEST
 			bin_num = 0;
 			count = 0;
 		}

@@ -49,7 +49,10 @@ void bitstreams::write(std::string filename)
 	std::ofstream ofs(filename, std::ios::binary);
 
 	// Write to our output file using storage where bytes are held
-	ofs.write(reinterpret_cast<char*>(&bytes[0]), bytes.size() * sizeof(unsigned char));
+	for (auto &byte : bytes)
+	{
+		ofs.write(reinterpret_cast<char*>(&byte), sizeof(unsigned char));
+	}
 
 	// Use Linux cmp or diff command to confirm the input and output files are the same
 }
@@ -109,13 +112,8 @@ void bitstreams::flush()
 	buffer = buffer << 8;
 }
 
-void bitstreams::doit(std::ofstream file, unsigned char byte)
-{
-	file.write(reinterpret_cast<char*>(&byte), sizeof(unsigned char));
+auto main()->int {
+	bitstreams bs;
+	bs.read("input.txt");
+	bs.write("yayyay2.txt");
 }
-
-//auto main()->int {
-//	bitstreams bs;
-//	bs.read("input.txt");
-//	bs.write("yayyay.txt");
-//}
